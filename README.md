@@ -1,5 +1,4 @@
-# javaemailclient
-## Cliente básico de email (exámen final)
+# Cliente básico de email (examen final)
 
 ### Sistema de gestión de Emails que permite llevar a cabo las siguientes funciones:
 ● Crear cuenta / modificar cuenta <br>
@@ -22,3 +21,6 @@ acciones simultáneas al momento de actualizar la base de datos, los métodos
 encargados de llevar a cabo esas acciones llevan la palabra reservada
 synchronized en su definición.
 
+### Modelo relacional
+
+<img src="bd/DIAGRAMA_RELACIONAL.png" title="Modelo Relacional" />
