@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated 01-ago-2021 6:53:47 by Hibernate Tools 4.3.1 -->
+<hibernate-mapping>
+  <class catalog="emails" name="com.guilleminio.emails.modelos.Usuarios" optimistic-lock="version" table="usuarios">
+    <id name="idUsuario" type="java.lang.Integer">
+      <column name="idUsuario"/>
+      <generator class="identity"/>
+    </id>
+    <property name="nombreUsuario" type="string">
+      <column length="300" name="nombreUsuario" not-null="true"/>
+    </property>
+    <property name="apellidoUsuario" type="string">
+      <column length="300" name="apellidoUsuario" not-null="true"/>
+    </property>
+    <property name="emailUsuario" type="string">
+      <column length="300" name="emailUsuario" not-null="true"/>
+    </property>
+    <property name="contraseniaUsuario" type="string">
+      <column length="300" name="contraseniaUsuario" not-null="true"/>
+    </property>
+    <property name="fechaAltaUsuario" type="timestamp">
+      <column length="19" name="fechaAltaUsuario" not-null="true"/>
+    </property>
+    <property name="imagenPathUsuario" type="string">
+      <column length="300" name="imagenPathUsuario"/>
+    </property>
+    <set fetch="select" inverse="true" lazy="true" name="contactoses" table="contactos">
+      <key>
+        <column name="idUsuario" not-null="true"/>
+      </key>
+      <one-to-many class="com.guilleminio.emails.modelos.Contactos"/>
+    </set>
+    <set fetch="select" inverse="true" lazy="true" name="emailses" table="emails">
+      <key>
+        <column name="idUsuario" not-null="true"/>
+      </key>
+      <one-to-many class="com.guilleminio.emails.modelos.Emails"/>
+    </set>
+  </class>
+</hibernate-mapping>

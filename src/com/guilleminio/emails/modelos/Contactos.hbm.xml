@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated 01-ago-2021 6:53:47 by Hibernate Tools 4.3.1 -->
+<hibernate-mapping>
+  <class catalog="emails" name="com.guilleminio.emails.modelos.Contactos" optimistic-lock="version" table="contactos">
+    <id name="idContacto" type="java.lang.Integer">
+      <column name="idContacto"/>
+      <generator class="identity"/>
+    </id>
+    <many-to-one class="com.guilleminio.emails.modelos.Usuarios" fetch="select" name="usuarios">
+      <column name="idUsuario" not-null="true"/>
+    </many-to-one>
+    <property name="nombreContacto" type="string">
+      <column length="300" name="nombreContacto" not-null="true"/>
+    </property>
+    <property name="apellidoContacto" type="string">
+      <column length="300" name="apellidoContacto" not-null="true"/>
+    </property>
+    <property name="emailContacto" type="string">
+      <column length="300" name="emailContacto" not-null="true"/>
+    </property>
+    <property name="imagenContacto" type="string">
+      <column length="300" name="imagenContacto" not-null="true"/>
+    </property>
+  </class>
+</hibernate-mapping>

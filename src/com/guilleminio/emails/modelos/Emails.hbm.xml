@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated 01-ago-2021 6:53:47 by Hibernate Tools 4.3.1 -->
+<hibernate-mapping>
+  <class catalog="emails" name="com.guilleminio.emails.modelos.Emails" optimistic-lock="version" table="emails">
+    <id name="idEmail" type="java.lang.Integer">
+      <column name="idEmail"/>
+      <generator class="identity"/>
+    </id>
+    <many-to-one class="com.guilleminio.emails.modelos.Usuarios" fetch="select" name="usuarios">
+      <column name="idUsuario" not-null="true"/>
+    </many-to-one>
+    <property name="tipoEmail" type="string">
+      <column length="300" name="tipoEmail" not-null="true"/>
+    </property>
+    <property name="asuntoEmail" type="string">
+      <column length="300" name="asuntoEmail"/>
+    </property>
+    <property name="contenidoEmail" type="string">
+      <column length="500" name="contenidoEmail"/>
+    </property>
+    <property name="estadoEmail" type="string">
+      <column length="300" name="estadoEmail" not-null="true"/>
+    </property>
+    <property name="fechaCreacionEmailEnvio" type="timestamp">
+      <column length="19" name="fechaCreacionEmailEnvio"/>
+    </property>
+    <property name="fechaEnvioEmailEnvio" type="timestamp">
+      <column length="19" name="fechaEnvioEmailEnvio"/>
+    </property>
+    <property name="destinoEmailEnvio" type="string">
+      <column length="500" name="destinoEmailEnvio"/>
+    </property>
+    <property name="origenEmailRecibido" type="string">
+      <column length="300" name="origenEmailRecibido"/>
+    </property>
+    <property name="fechaLlegadaEmailRecibido" type="timestamp">
+      <column length="19" name="fechaLlegadaEmailRecibido"/>
+    </property>
+    <property name="leidoEmailRecibido" type="boolean">
+      <column name="leidoEmailRecibido" not-null="true"/>
+    </property>
+    <set fetch="select" inverse="true" lazy="true" name="respuestasPorEmailsForIdEmailRespuesta" table="respuestas_por_email">
+      <key>
+        <column name="idEmailRespuesta" not-null="true"/>
+      </key>
+      <one-to-many class="com.guilleminio.emails.modelos.RespuestasPorEmail"/>
+    </set>
+    <set fetch="select" inverse="true" lazy="true" name="respuestasPorEmailsForIdEmailOrigen" table="respuestas_por_email">
+      <key>
+        <column name="idEmailOrigen" not-null="true"/>
+      </key>
+      <one-to-many class="com.guilleminio.emails.modelos.RespuestasPorEmail"/>
+    </set>
+  </class>
+</hibernate-mapping>

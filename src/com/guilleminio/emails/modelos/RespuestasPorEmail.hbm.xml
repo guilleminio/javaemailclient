@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated 01-ago-2021 6:53:47 by Hibernate Tools 4.3.1 -->
+<hibernate-mapping>
+  <class catalog="emails" name="com.guilleminio.emails.modelos.RespuestasPorEmail" optimistic-lock="version" table="respuestas_por_email">
+    <composite-id class="com.guilleminio.emails.modelos.RespuestasPorEmailId" name="id">
+      <key-property name="idRespuesta" type="int">
+        <column name="idRespuesta"/>
+      </key-property>
+      <key-property name="idEmailRespuesta" type="int">
+        <column name="idEmailRespuesta"/>
+      </key-property>
+    </composite-id>
+    <many-to-one class="com.guilleminio.emails.modelos.Emails" fetch="select" insert="false" name="emailsByIdEmailRespuesta" update="false">
+      <column name="idEmailRespuesta" not-null="true"/>
+    </many-to-one>
+    <many-to-one class="com.guilleminio.emails.modelos.Emails" fetch="select" name="emailsByIdEmailOrigen">
+      <column name="idEmailOrigen" not-null="true"/>
+    </many-to-one>
+  </class>
+</hibernate-mapping>
